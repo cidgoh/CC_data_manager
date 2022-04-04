@@ -14,8 +14,9 @@ logo=$(cat <<-END
 END
 )
 
-default_local_end="54f7d944-2c67-11ec-95dc-853490a236f9"
-default_remote_end="9cd65512-2c5b-11ec-9e48-3df4ed83d858"
+default_local_end="f297b3ec-b450-11ec-b87e-3912f602f346"
+default_remote_end="c8b6d874-b454-11ec-bae1-cd8db799a66a"
+
 sync='checksum'
 
 # Sync options:
