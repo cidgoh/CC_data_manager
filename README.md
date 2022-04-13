@@ -3,7 +3,7 @@
 
 usage: python3 ./cc_data_manager.sh -i input_folder -o remote_folder -u email_address -r remote_endpoint
 
-Tips: You can also input recipient emails and remote endpoint ID in the config.ini file. 
+Tips: You can also put recipient emails and remote endpoint ID in the config.ini file. 
   
 
 ```
