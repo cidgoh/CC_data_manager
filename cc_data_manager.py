@@ -72,7 +72,7 @@ if __name__ == '__main__':
     config   = configparser.ConfigParser()
     config.read(path+'/config.ini')
     p2_exit_code = ""
-
+    conda = '/home/ubuntu/miniconda3/bin/conda'
     # parse email list
     email_list_all = email_list_config = email_list_input = []
     if(config['DEFAULT']['USERS']):
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
 
     # get local endpoint id
-    p0 = run(['conda', 'run', '-n','globus', 'globus', 'endpoint', 'local-id'],capture_output=True)
+    p0 = run([conda, 'run', '-n','globus', 'globus', 'endpoint', 'local-id'],capture_output=True)
     if(p0.returncode!=0):
         print("\n")
         sys.exit("--- Please check your if your local Globus Connect Personal has been set up!") 
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     print("Checking local endpoint")
 
-    p1 = run(['conda', 'run', '-n','globus', 'globus', 'ls', local_endpoint], capture_output=True )
+    p1 = run([conda, 'run', '-n','globus', 'globus', 'ls', local_endpoint], capture_output=True )
     p1_err_info = p1.stderr.decode()
 
     if(p1.returncode!=0):
@@ -149,10 +149,10 @@ if __name__ == '__main__':
 
     print("Checking remote path: "+remote_path)
 
-    if(not check_tool("globus")):  
-        sys.exit("--- Please check if you have installed globus-cli!")
+#    if(not check_tool("globus")):  
+ #       sys.exit("--- Please check if you have installed globus-cli!")
 
-    p2 = run( [ 'conda', 'run', '-n','globus', 'globus', 'ls', remote_path], capture_output=True )
+    p2 = run( [conda, 'run', '-n','globus', 'globus', 'ls', remote_path], capture_output=True )
     p2_err_info = p2.stderr.decode()
 
     try:
@@ -164,7 +164,7 @@ if __name__ == '__main__':
         print("Remote endpoint is ready to use.")        
 
     if(p2_exit_code == "c1"):
-        p3 = run( [ 'conda', 'run', '-n','globus', 'globus', 'mkdir', remote_path], capture_output=True )
+        p3 = run( [conda, 'run', '-n','globus', 'globus', 'mkdir', remote_path], capture_output=True )
         if(p3.returncode) == 0:
             print("The directory was created successfully")
         if(p3.returncode) != 0:
@@ -172,7 +172,7 @@ if __name__ == '__main__':
             sys.exit()
 
     # start to transfer data
-    p4 = run( [ 'conda', 'run', '-n','globus', 'globus', 'transfer', '--notify', 'failed,inactive,succeeded', '--recursive', '--sync-level', args.sync_level, local_path, remote_path], capture_output=True )
+    p4 = run( [conda, 'run', '-n','globus', 'globus', 'transfer', '--notify', 'failed,inactive,succeeded', '--recursive', '--sync-level', args.sync_level, local_path, remote_path], capture_output=True )
     if(p4.returncode!=0):
         print("\n")
         sys.exit("--- Globus transfer job is not submitted successfully. Please check the network or configuration!") 
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     if(len(email_list_all) > 0):
         for tmp_email in email_list_all:            
             print("Granting user " + tmp_email + " read access to the remote directory")
-            p5= run(['conda', 'run', '-n','globus', 'globus', 'endpoint', 'permission', 'create', '--provision-identity', tmp_email, '--permissions', 'r', remote_path, '--notify-email', tmp_email], capture_output=True )
+            p5= run([conda, 'run', '-n','globus', 'globus', 'endpoint', 'permission', 'create', '--provision-identity', tmp_email, '--permissions', 'r', remote_path, '--notify-email', tmp_email], capture_output=True )
             p5_err_info = p5.stderr.decode()
 
             try:
@@ -202,7 +202,7 @@ if __name__ == '__main__':
     if(len(group_list_all) > 0):
         for tmp_group in group_list_all:  
             print("Granting group "+tmp_group + " read access to the destination directory")
-            p6= run(['conda', 'run', '-n','globus', 'globus', 'endpoint', 'permission', 'create', '--group', tmp_group, '--permissions', 'r', remote_path], capture_output=True)
+            p6= run([conda, 'run', '-n','globus', 'globus', 'endpoint', 'permission', 'create', '--group', tmp_group, '--permissions', 'r', remote_path], capture_output=True)
             p6_err_info = p6.stderr.decode()
             try:
                 match = re.search(r'This folder is already shared with this identity', p6_err_info, re.DOTALL)
