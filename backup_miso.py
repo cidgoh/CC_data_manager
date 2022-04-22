@@ -44,9 +44,7 @@ if __name__ == '__main__':
     output_dir=str(output_dir)+"/"+str(data_stamp)
     check_create_folder(output_dir)
     folder_name = os.path.basename(input_dir)
-    gz_file = output_dir+"/"+folder_name+".tar.gz"
-    if(os.path.exists(gz_file)):
-        gz_file = output_dir+"/"+folder_name+"_"+str(data_stamp)+"_"+timestampStr+".tar.gz"
+    gz_file = output_dir+"/"+folder_name+"_"+str(data_stamp)+"_"+timestampStr+".tar.gz"
     
     p = subprocess.run(["sudo","tar", "czvf",gz_file, input_dir],capture_output=True)
     if(p.returncode) == 0:
