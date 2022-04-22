@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Developped by CIDGOH group to transfer a file or directory from one endpoint to another as an asynchronous task.
+Developed by CIDGOH group to transfer a file or directory from one endpoint to another as an asynchronous task.
 
 If you have any issue, please contact: 
 wwhsiao@sfu.ca, duanjun1981@gmai.com
