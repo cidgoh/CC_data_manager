@@ -11,7 +11,7 @@ Tips: You can also put recipient emails and remote endpoint ID in the config.ini
 CIGOH cc_data_manager version:0.2
 
 
-Developped by CIDGOH (https://cidgoh.ca/) to transfer a file or directory from one endpoint to another as an asynchronous task.
+Developed by CIDGOH (https://cidgoh.ca/) to transfer a file or directory from one endpoint to another as an asynchronous task.
 
 If you have any issue, please contact:
 
