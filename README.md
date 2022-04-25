@@ -1,5 +1,8 @@
 # Compute Canada data manager
 
+CC_data_manager is a tool kit to manage and transfer data using Globus. Normally a series of command lines that are needed to type when using globus_cli. CC_data_manager can save time to let the user just type one command line to finish all the jobs. It is able to automatically detect local endpoint ID, check the status of local and remote endpoints, transfer data and then grant permissions based on the designated users or groups.  
+
+
 
 usage: python3 ./cc_data_manager.sh -i input_folder -o remote_folder -u email_address -r remote_endpoint
 
