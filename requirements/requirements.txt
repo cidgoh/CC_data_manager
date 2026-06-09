@@ -1,1 +1,1 @@
-globus_cli=3.4.0
+globus-cli>=4.0

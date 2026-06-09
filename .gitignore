@@ -1,0 +1,40 @@
+# Virtual environment (pip-based)
+globus_venv/
+venv/
+env/
+ENV/
+
+# Conda environment (if any)
+.conda/
+envs/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+.project
+.pydevproject
+
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.iniMiniconda3-latest-Linux-x86_64.sh
